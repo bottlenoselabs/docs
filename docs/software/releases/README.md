@@ -3,6 +3,40 @@
 
 Documentation on software releases at Bottlenose Labs Inc.
 
+## Prerequisites
+
+1. Setup [GitVersion](https://github.com/GitTools/GitVersion) for the respository if not done already. Use the following `GitVersion.yml`:
+
+```yml
+mode: ContinuousDeployment
+continuous-delivery-fallback-tag: '' # This value by default is `ci`. Make sure the NuGet pre-release name is `MAJOR.MINOR.PATCH-COMMITNUMBER`; otherwise, by default it would something like the following `1.0.0-ci001`.
+assembly-versioning-scheme: None # With the newer SDK style projects in .NET, preference is to pass the version during `dotnet build` explicitly as a property parameter
+```
+
+2. Setup a GitHub action workflow. Assumes the main branch is `main` on GitHub. Assumes the secret `MYGET_ACCESS_TOKEN` and `NUGET_ACCESS_TOKEN` are setup in GitHub.
+
+```yml
+on:
+  push:
+    tags:
+      - v*
+    branches:
+      - main
+    paths-ignore:
+      - "**.md"
+
+jobs:
+  dotnet-job:
+    runs-on: ubuntu-latest
+    name: ".NET"
+    steps:
+      - uses: bottlenoselabs/github-actions-dotnet@v2
+        with:
+          solution-or-project: '/path/to/project.csproj'
+          myget-access-token: '${{ secrets.MYGET_ACCESS_TOKEN }}'
+          nuget-access-token: '${{ secrets.NUGET_ACCESS_TOKEN }}'
+```
+
 ## Creating a release
 
 1. Create a commit on the main branch either via completing a pull request or via a direct push. This commit will be the release candidate.
