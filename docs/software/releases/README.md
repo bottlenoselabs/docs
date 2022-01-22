@@ -5,7 +5,7 @@ Documentation on software releases at Bottlenose Labs Inc.
 
 ## Prerequisites
 
-1. Setup [GitVersion](https://github.com/GitTools/GitVersion) for the respository if not done already. Use the following `GitVersion.yml`:
+1. Setup [GitVersion](https://github.com/GitTools/GitVersion) for the respository if not done already. Use the following `GitVersion.yml`.
 
 ```yml
 mode: ContinuousDeployment
@@ -13,7 +13,7 @@ continuous-delivery-fallback-tag: '' # This value by default is `ci`. Make sure 
 assembly-versioning-scheme: None # With the newer SDK style projects in .NET, preference is to pass the version during `dotnet build` explicitly as a property parameter
 ```
 
-2. Setup a GitHub action workflow. Assumes the main branch is `main` on GitHub. Assumes the secret `MYGET_ACCESS_TOKEN` and `NUGET_ACCESS_TOKEN` are setup in GitHub.
+2. Setup a GitHub action workflow `main.yml` (can be named differently but must have `.yml` extension). Assumes the main branch is `main` on GitHub. Assumes the secret `MYGET_ACCESS_TOKEN` and `NUGET_ACCESS_TOKEN` are setup in GitHub. Assumes actions are enabled for the repository. Place the `.yml` file in repository under `.github/workflows/`.
 
 ```yml
 on:
