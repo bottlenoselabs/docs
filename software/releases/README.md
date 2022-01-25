@@ -35,6 +35,9 @@ jobs:
           solution-or-project: '/path/to/project.csproj'
           myget-access-token: '${{ secrets.MYGET_ACCESS_TOKEN }}'
           nuget-access-token: '${{ secrets.NUGET_ACCESS_TOKEN }}'
+          is-enabled-pack: 'true'
+          upload-nuget-org: "${{ startsWith(github.ref, 'refs/tags/v') }}"
+          upload-myget-org: "${{ github.event_name == 'push' || startsWith(github.ref, 'refs/tags/v') }}"
 ```
 
 ## Creating a release
