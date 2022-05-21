@@ -17,7 +17,7 @@ assembly-versioning-scheme: None # With the newer SDK style projects in .NET, pr
 
 1. Setup a GitHub action workflow `main.yml` (can be named differently but must have `.yml` extension). Assumes the main branch is `main` on GitHub. Assumes the secret `MYGET_ACCESS_TOKEN` and `NUGET_ACCESS_TOKEN` are setup in GitHub. Assumes GitHub Actions are enabled for the repository. Place the `.yml` file in repository under `.github/workflows/`.
 
-See [PIPELINES.md](./..//pipelines/README.md) for more details on CI/CD using GitHub Actions.
+See [PIPELINES/README.md](./..//pipelines/README.md) for more details on CI/CD using GitHub Actions.
 
 ```yml
 on:
