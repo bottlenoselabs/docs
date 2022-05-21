@@ -7,13 +7,15 @@ Documentation on software releases at Bottlenose Labs Inc.
 
 1. Setup [GitVersion](https://github.com/GitTools/GitVersion) for the respository if not done already. Use the following `GitVersion.yml`.
 
+See [VERSIONING/README.md](./../versioning/README.md) for more details on GitVersion and semantic versioning (SemVer2).
+
 ```yml
 mode: ContinuousDeployment
 continuous-delivery-fallback-tag: '' # This value by default is `ci`. Make sure the NuGet pre-release name is `MAJOR.MINOR.PATCH-COMMITNUMBER`; otherwise, by default it would something like the following `1.0.0-ci001`.
 assembly-versioning-scheme: None # With the newer SDK style projects in .NET, preference is to pass the version during `dotnet build` explicitly as a property parameter
 ```
 
-2. Setup a GitHub action workflow `main.yml` (can be named differently but must have `.yml` extension). Assumes the main branch is `main` on GitHub. Assumes the secret `MYGET_ACCESS_TOKEN` and `NUGET_ACCESS_TOKEN` are setup in GitHub. Assumes GitHub Actions are enabled for the repository. Place the `.yml` file in repository under `.github/workflows/`.
+1. Setup a GitHub action workflow `main.yml` (can be named differently but must have `.yml` extension). Assumes the main branch is `main` on GitHub. Assumes the secret `MYGET_ACCESS_TOKEN` and `NUGET_ACCESS_TOKEN` are setup in GitHub. Assumes GitHub Actions are enabled for the repository. Place the `.yml` file in repository under `.github/workflows/`.
 
 See [PIPELINES.md](./..//pipelines/README.md) for more details on CI/CD using GitHub Actions.
 
@@ -50,7 +52,9 @@ jobs:
   <img src="./image001.png">
 </p>
 
-2. Wait for the continuous integeration (CI) and continuous delivery (CD) automated workflows to finish with everything green for the candidate release commit. If CI/CD failed, that needs to be fixed with a new commit. See [PIPELINES.md](./..//pipelines/README.md) for more details on CI/CD using GitHub Actions.
+2. Wait for the continuous integeration (CI) and continuous delivery (CD) automated workflows to finish with everything green for the candidate release commit. If CI/CD failed, that needs to be fixed with a new commit.
+
+See [PIPELINES/README.md](./..//pipelines/README.md) for more details on CI/CD using GitHub Actions.
 
 <p align="center">
   <img src="./image002.png">
@@ -62,7 +66,7 @@ jobs:
   <img src="./image003.png">
 </p>
 
-4. Create a Git tag at the release candidate commit with prefix `v` with the bumped version that follows semantic versioning. See [VERSIONING](./../versioning/README.md) for more details on semantic versioning.
+4. Create a Git tag at the release candidate commit with prefix `v` with the bumped version that follows semantic versioning. See [VERSIONING/README.md](./../versioning/README.md) for more details on semantic versioning.
 
 <p align="center">
   <img src="./image004.png">
