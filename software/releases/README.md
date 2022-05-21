@@ -1,5 +1,5 @@
 
-# Software Releases
+# Software: Releases
 
 Documentation on software releases at Bottlenose Labs Inc.
 
@@ -13,7 +13,9 @@ continuous-delivery-fallback-tag: '' # This value by default is `ci`. Make sure 
 assembly-versioning-scheme: None # With the newer SDK style projects in .NET, preference is to pass the version during `dotnet build` explicitly as a property parameter
 ```
 
-2. Setup a GitHub action workflow `main.yml` (can be named differently but must have `.yml` extension). Assumes the main branch is `main` on GitHub. Assumes the secret `MYGET_ACCESS_TOKEN` and `NUGET_ACCESS_TOKEN` are setup in GitHub. Assumes actions are enabled for the repository. Place the `.yml` file in repository under `.github/workflows/`.
+2. Setup a GitHub action workflow `main.yml` (can be named differently but must have `.yml` extension). Assumes the main branch is `main` on GitHub. Assumes the secret `MYGET_ACCESS_TOKEN` and `NUGET_ACCESS_TOKEN` are setup in GitHub. Assumes GitHub Actions are enabled for the repository. Place the `.yml` file in repository under `.github/workflows/`.
+
+See [PIPELINES.md](./..//pipelines/README.md) for more details on CI/CD using GitHub Actions.
 
 ```yml
 on:
@@ -48,7 +50,7 @@ jobs:
   <img src="./image001.png">
 </p>
 
-2. Wait for the continuous integeration (CI) and continuous delivery (CD) automated workflows to finish with everything green for the candidate release commit. If CI/CD failed, that needs to be fixed with a new commit. See [DEVOPS.md](./../devops/README.md) for more details on CI/CD.
+2. Wait for the continuous integeration (CI) and continuous delivery (CD) automated workflows to finish with everything green for the candidate release commit. If CI/CD failed, that needs to be fixed with a new commit. See [PIPELINES.md](./..//pipelines/README.md) for more details on CI/CD using GitHub Actions.
 
 <p align="center">
   <img src="./image002.png">
